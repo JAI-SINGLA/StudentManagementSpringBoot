@@ -47,8 +47,7 @@ public class StudentProjectApplicationTests {
       HttpMethod.GET, entity, String.class);
 
     Assert.assertEquals(200,response.getStatusCodeValue());
-    logger.info("All Students -> {}",response.getBody());
-
+    //    logger.info("All Students -> {}",response.getBody());
 
     Assert.assertNotNull(response.getBody());
   }
@@ -67,7 +66,7 @@ public class StudentProjectApplicationTests {
   @Test
   public void testCreateStudent() {
     Student student = new Student();
-    student.setEmail("1wers@5623.com");
+    student.setEmail("1wers@5693.com");
     student.setFirstName("asdmin");
     student.setLastName("asmin");
 
@@ -89,11 +88,13 @@ public class StudentProjectApplicationTests {
 
   @Test
   public void testDeleteStudentById(){
-    ResponseEntity<Student> student = restTemplate.getForEntity(getRootUrl() + "/student/56" , Student.class);
+    ResponseEntity<Student> student =
+        restTemplate.getForEntity(getRootUrl() + "/student/60", Student.class);
     Assert.assertEquals(student.getStatusCode(),HttpStatus.OK);
-    restTemplate.delete(getRootUrl() + "/student/56" , Student.class);
+    restTemplate.delete(getRootUrl() + "/student/60", Student.class);
 
-    ResponseEntity<Student> response = restTemplate.getForEntity(getRootUrl() + "/student/56" , Student.class);
+    ResponseEntity<Student> response =
+        restTemplate.getForEntity(getRootUrl() + "/student/60", Student.class);
 
     Assert.assertEquals(response.getStatusCode(),HttpStatus.NOT_FOUND);
   }

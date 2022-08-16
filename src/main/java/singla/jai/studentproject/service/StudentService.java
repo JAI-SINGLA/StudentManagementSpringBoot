@@ -62,9 +62,6 @@ public class StudentService {
 
   public Student getStudentByEmail(String email) {
     Student student= studentRepository.findByEmail(email).orElseThrow(() -> new ResourceNotFoundException("Student not found on email:: " + email));
-
-
-    logger.info("Exception found code breaks");
     return student;
   }
 }
